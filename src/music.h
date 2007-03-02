@@ -24,11 +24,6 @@ class Music{
 public:
 	Music();
 
-	/*
-	Music( const char * song );
-	Music( const string & song );
-	*/
-
 	~Music();
 
 	static bool loadSong( const char * song );
@@ -37,51 +32,32 @@ public:
 	/* load one of the songs in 'songs' */
 	static void loadSong( const vector< string > & songs );
 
-	void doPlay();
-
-	/*
-	void _loadSong( const char * song );
-	void _loadSong( const string & song );
-	*/
-
-	void _play();
-	void _pause();
-	void _soften();
-	void _louden();
-
 	static void pause();
 	static void play();
 	static void soften();
 	static void louden();
-
-	/*
-	void _pause();
-	void _resume();
-	*/
-
-	/*
-	void _play();
-	int _soften();
-	int _louden();
-	void _maxVolume();
-	*/
-
+	static void fadeIn();
+	static void fadeOut();
 	static void setVolume( double v );
 	static double getVolume();
-
-		/*
-		return (int)( volume * 100 );
-	}
-	*/
-
 	static void mute();
 	static void unmute();
+	
+	void doPlay();
 
 protected:
 
 	void _setVolume( double vol );
+	void _play();
+	void _pause();
+	void _soften();
+	void _louden();
+	void _fadeIn();
+	void _fadeOut();
 
 	bool playing;
+
+	int fading;
 
 	bool internal_loadSong( const char * path );
 

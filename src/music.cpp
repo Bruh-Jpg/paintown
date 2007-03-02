@@ -1,5 +1,4 @@
-#include "util/music.h"
-#include "util/funcs.h"
+#include "music.h"
 #include <string>
 #include <aldumb.h>
 #include <iostream>
@@ -10,6 +9,7 @@
 #endif
 
 #include <pthread.h>
+#include "util/funcs.h"
 
 using namespace std;
 
@@ -37,6 +37,7 @@ static void * playMusic( void * );
 
 Music::Music():
 playing( false ),
+fading( 0 ),
 player( NULL ),
 music_file( NULL ){
 
@@ -66,8 +67,10 @@ static void * playMusic( void * _music ){
 
 	cout << "Playing music" << endl;
 
-	// unsigned int tick = 0;
-	// unsigned int counter;
+	/*
+	unsigned int tick = 0;
+	unsigned int counter;
+	*/
 
 	bool playing = true;
 	while ( playing ){
@@ -77,7 +80,7 @@ static void * playMusic( void * _music ){
 			music->doPlay();
 		}
 		UNLOCK;
-		rest( 50 );
+		rest( 10 );
 
 		// Util::YIELD();
 		// pthread_yield();
@@ -89,11 +92,37 @@ static void * playMusic( void * _music ){
 }
 
 double Music::getVolume(){
-	return volume;
+	LOCK;{
+		return volume;
+	}
+	UNLOCK;
 }
 
 void Music::doPlay(){
 	if ( this->playing ){
+		double f = fading / 500.0;
+		switch ( fading ){
+			case -1 : {
+				if ( volume + f < 0 ){
+					fading = 0;
+					volume = 0;
+				} else {
+					volume += f;
+					this->_setVolume( volume );
+				}
+				break;
+			}
+			case 1 : {
+				if ( volume + f > 1.0 ){
+					fading = 0;
+					volume = 1.0;
+				} else {
+					volume += f;
+					this->_setVolume( volume );
+				}
+				break;
+			}
+		}
 		if ( al_poll_duh( this->player ) != 0 ){
 		}
 	}
@@ -118,6 +147,28 @@ music_file( NULL ){
 	loadSong( song );
 }
 */
+
+void Music::fadeIn(){
+	LOCK;{
+		instance->_fadeIn();
+	}
+	UNLOCK;
+}
+
+void Music::fadeOut(){
+	LOCK;{
+		instance->_fadeOut();
+	}
+	UNLOCK;
+}
+
+void Music::_fadeIn(){
+	fading = 1;
+}
+
+void Music::_fadeOut(){
+	fading = -1;
+}
 
 bool Music::loadSong( const char * song ){
 	bool loaded = false;
@@ -210,25 +261,37 @@ void Music::pause(){
 }
 
 void Music::soften(){
-	instance->_soften();
+	LOCK;{
+		instance->_soften();
+	}
+	UNLOCK;
 }
 
 void Music::_soften(){
-	if ( volume > 0.1 ) volume -= 0.1;
-	else volume = 0.0;
+	if ( volume > 0.1 ){
+		volume -= 0.1;
+	} else {
+		volume = 0.0;
+	}
 	
-	setVolume( volume );
+	_setVolume( volume );
 }
 
 void Music::louden(){
-	instance->_louden();
+	LOCK;{
+		instance->_louden();
+	}
+	UNLOCK;
 }
 
 void Music::_louden(){
-	if ( volume < 0.9 ) volume += 0.1;
-	else volume = 1.0;
+	if ( volume < 0.9 ){
+		volume += 0.1;
+	} else {
+		volume = 1.0;
+	}
 	
-	setVolume( volume );
+	_setVolume( volume );
 }
 
 void Music::mute(){
@@ -236,8 +299,15 @@ void Music::mute(){
 }
 
 void Music::setVolume( double vol ){
-	volume = vol;
+
 	LOCK;{
+		volume = vol;
+		if ( volume > 1.0 ){
+			volume = 1.0;
+		}
+		if ( volume < 0 ){
+			volume = 0;
+		}
 		instance->_setVolume( volume );
 	}
 	UNLOCK;
@@ -331,7 +401,7 @@ bool Music::internal_loadSong( const char * path ){
 	}
 
 	if ( music_file ){
-		int buf = 1 << 14;
+		int buf = 1 << 10;
 		player = al_start_duh( music_file, 2, 0, volume, buf, 22050 );
 		// cout << "Loaded music player " << player << endl;
 
