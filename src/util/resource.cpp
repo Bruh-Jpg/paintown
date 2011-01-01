@@ -1,10 +1,10 @@
-#include "util/bitmap.h"
+#include "bitmap.h"
 #include "resource.h"
 #include "factory/collector.h"
-#include "util/funcs.h"
-#include "util/sound.h"
-#include "util/load_exception.h"
-#include "util/file-system.h"
+#include "funcs.h"
+#include "sound.h"
+#include "load_exception.h"
+#include "file-system.h"
 #include <string>
 #include <vector>
 

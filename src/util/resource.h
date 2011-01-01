@@ -2,8 +2,8 @@
 #define _paintown_resource_manager_h
 
 #include "factory/collector.h"
-#include "util/load_exception.h"
-#include "util/file-system.h"
+#include "load_exception.h"
+#include "file-system.h"
 #include <map>
 #include <string>
 #include <vector>
