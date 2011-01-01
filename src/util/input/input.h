@@ -2,7 +2,7 @@
 #define _paintown_input_h
 
 #include <vector>
-#include "input/joystick.h"
+#include "joystick.h"
 
 class Configuration;
 

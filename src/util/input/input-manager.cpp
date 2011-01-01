@@ -1,7 +1,8 @@
 #include "input-manager.h"
 #include "configuration.h"
+/* FIXME: break this dependancy */
 #include "paintown-engine/object/object.h"
-#include "input/joystick.h"
+#include "joystick.h"
 #include "util/events.h"
 #include "globals.h"
 #include "util/debug.h"
