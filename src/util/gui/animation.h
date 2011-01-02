@@ -4,8 +4,8 @@
 #include <vector>
 #include <map>
 
-#include "util/load_exception.h"
-#include "gui/coordinate.h"
+#include "../load_exception.h"
+#include "coordinate.h"
 
 class Token;
 class Bitmap;

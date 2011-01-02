@@ -1,8 +1,8 @@
-#include "gui/fadetool.h"
-#include "util/bitmap.h"
-#include "util/trans-bitmap.h"
-#include "util/token.h"
-#include "util/load_exception.h"
+#include "fadetool.h"
+#include "../bitmap.h"
+#include "../trans-bitmap.h"
+#include "../token.h"
+#include "../load_exception.h"
 
 using namespace Gui;
 

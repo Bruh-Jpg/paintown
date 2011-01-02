@@ -4,10 +4,10 @@
 #include <string>
 #include <vector>
 
-#include "gui/widget.h"
-#include "gui/box.h"
+#include "widget.h"
+#include "box.h"
 
-#include "util/gradient.h"
+#include "../gradient.h"
 
 namespace Gui{
     

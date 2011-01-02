@@ -2,7 +2,7 @@
 #define _paintown_gui_container_h
 
 #include <list>
-#include "gui/rectarea.h"
+#include "rectarea.h"
 
 class Bitmap;
 class Font;

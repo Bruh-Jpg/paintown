@@ -1,4 +1,4 @@
-#include "gui/animation.h"
+#include "animation.h"
 
 #include <vector>
 #include <math.h>
@@ -6,9 +6,9 @@
 #include "util/token.h"
 #include "util/bitmap.h"
 #include "globals.h"
-#include "util/debug.h"
-#include "util/funcs.h"
-#include "util/file-system.h"
+#include "../debug.h"
+#include "../funcs.h"
+#include "../file-system.h"
 
 using namespace std;
 using namespace Gui;

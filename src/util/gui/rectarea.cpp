@@ -1,5 +1,5 @@
-#include "util/bitmap.h"
-#include "gui/rectarea.h"
+#include "../bitmap.h"
+#include "rectarea.h"
 
 using namespace Gui;
 

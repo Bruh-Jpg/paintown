@@ -1,12 +1,12 @@
-#include "util/bitmap.h"
-#include "util/trans-bitmap.h"
+#include "../bitmap.h"
+#include "../trans-bitmap.h"
 #include "tabbed-box.h"
 
 #include "menu/menu.h"
 
 #include "util/font.h"
 
-#include "gui/context-box.h"
+#include "context-box.h"
 
 using namespace Gui;
 

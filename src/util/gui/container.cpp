@@ -1,7 +1,7 @@
-#include "gui/container.h"
+#include "container.h"
 
-#include "util/bitmap.h"
-#include "gui/widget.h"
+#include "../bitmap.h"
+#include "widget.h"
 
 using namespace Gui;
 

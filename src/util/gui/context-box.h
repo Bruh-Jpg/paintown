@@ -4,11 +4,11 @@
 #include <string>
 #include <vector>
 
-#include "gui/widget.h"
-#include "gui/popup-box.h"
+#include "widget.h"
+#include "popup-box.h"
 
-#include "util/gradient.h"
-#include "util/file-system.h"
+#include "../gradient.h"
+#include "../file-system.h"
 
 namespace Gui{
     

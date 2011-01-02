@@ -4,10 +4,10 @@
 #include <string>
 #include <vector>
 
-#include "gui/widget.h"
-#include "util/file-system.h"
+#include "widget.h"
+#include "../file-system.h"
 
-#include "util/gradient.h"
+#include "../gradient.h"
 
 class Token;
 
