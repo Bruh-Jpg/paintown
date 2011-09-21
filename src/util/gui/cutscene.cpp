@@ -1,7 +1,7 @@
 #include "cutscene.h"
 
 #include "util/bitmap.h"
-#include "util/gui/animation.h"
+#include "animation.h"
 #include "util/init.h"
 #include "util/input/input-map.h"
 #include "util/input/input-manager.h"
@@ -9,7 +9,7 @@
 #include "util/stretch-bitmap.h"
 #include "util/token.h"
 
-using namespace Platformer;
+using namespace Gui;
 
 Scene::Scene(const Token * token):
 ticks(0),

@@ -1,7 +1,7 @@
-#ifndef platformer_cutscene_h
-#define platformer_cutscene_h
+#ifndef util_gui_cutscene_h
+#define util_gui_cutscene_h
 
-#include "util/gui/fadetool.h"
+#include "fadetool.h"
 #include "util/pointer.h"
 
 #include <string>
@@ -11,12 +11,12 @@ class Token;
 namespace Graphics{
 class Bitmap;
 }
+
 namespace Gui{
+
 class Animation;
-}
 
 /*! Cut scenes or story boards */
-namespace Platformer{
 class Scene{
     public:
         Scene(const Token *);
