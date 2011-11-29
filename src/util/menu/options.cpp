@@ -7,7 +7,7 @@
 #include "util/tokenreader.h"
 #include "menu.h"
 #include "configuration.h"
-#include "menu/menu-exception.h"
+#include "menu-exception.h"
 #include "mugen/menu.h"
 #include "mugen/config.h"
 #include "util/init.h"
@@ -32,6 +32,7 @@
 #include "util/input/input-map.h"
 #include "util/input/input-manager.h"
 
+/* FIXME: remove this dependancy. move the platformer option to platformer/ */
 #include "platformer/game/game.h"
 
 #include <sstream>

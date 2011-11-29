@@ -1,4 +1,4 @@
-#include "menu/menu_action.h"
+#include "menu_action.h"
 
 MenuAction::MenuAction()
 {
