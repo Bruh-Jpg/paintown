@@ -3,9 +3,9 @@
 
 #include <string>
 #include <map>
-#include "util/file-system.h"
-#include "util/font.h"
-#include "util/thread.h"
+#include "file-system.h"
+#include "font.h"
+#include "thread.h"
 
 struct DATAFILE;
 class Font;

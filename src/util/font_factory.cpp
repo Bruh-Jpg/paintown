@@ -3,16 +3,15 @@
 #include <allegro.h>
 #endif
 #include <map>
-#include "util/font.h"
-#include "util/funcs.h"
-#include "util/file-system.h"
-#include "util/thread.h"
+#include "font.h"
+#include "funcs.h"
+#include "file-system.h"
+#include "thread.h"
 #include "font_factory.h"
-#include "globals.h"
-#include "util/debug.h"
-#include "util/exceptions/exception.h"
-#include "util/exceptions/load_exception.h"
-#include "util/ftalleg.h"
+#include "debug.h"
+#include "exceptions/exception.h"
+#include "exceptions/load_exception.h"
+#include "ftalleg.h"
 
 // #include "fonts.h"
 
